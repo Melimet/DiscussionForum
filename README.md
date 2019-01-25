@@ -20,3 +20,5 @@ Discussion Forum on keskustelufoorumi. Käyttäjät pystyvät luomaan lankoja(th
 Heroku : https://discusionforum.herokuapp.com/
 
 Nykyinen tietokantakaavio(Muutoksia todennäköisesti tulossa): https://github.com/Melimet/DiscussionForum/blob/master/documentation/DiscussionForumDatabaseChart.png
+
+Userstories: https://github.com/Melimet/DiscussionForum/blob/master/documentation/userstories.md
