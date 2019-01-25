@@ -15,7 +15,7 @@
             <td>{{ Thread.votes }}</td>
             <td>
                 <form method="POST"
-                      action="{{ url_for('Thread_votes', Thread_id=Thread.id) }}">
+                      action="{{ url_for('Thread_vote', Thread_id=Thread.id) }}">
                       <input type = "submit" value="Vote"/>
                 </form>
             </td>
