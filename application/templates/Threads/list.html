@@ -1,15 +1,24 @@
 {% extends "layout.html" %}
 
 {% block body %}
+    <H1>Threads</H1>
     <table>
         <tr>
             <th>Subject</th>
             <th>id</th>
+            <th>Votes</th>
         </tr>
         {% for Thread in Threads %}
         <tr>
             <td>{{ Thread.name }}</td>
             <td>{{ Thread.id }}</td>
+            <td>{{ Thread.votes }}</td>
+            <td>
+                <form method="POST"
+                      action="{{ url_for('Thread_votes', Thread_id=Thread.id) }}">
+                      <input type = "submit" value="Vote"/>
+                </form>
+            </td>
         </tr>
         {%  endfor %}
     </table>
