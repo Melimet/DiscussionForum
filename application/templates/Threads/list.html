@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Subject</th>
+            <th>id</th>
+        </tr>
+        {% for Thread in Threads %}
+        <tr>
+            <td>{{ Thread.name }}</td>
+            <td>{{ Thread.id }}</td>
+        </tr>
+        {%  endfor %}
+    </table>
+{% endblock %}

@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Discussion Forum</title>
+    </head>
 
-</body>
+    <body>
+        <ul>
+            <li><a href="{{ url_for('Threads_index') }}">See all threads</a></li>
+            <li><a href="{{ url_for ('Threads_form') }}">Submit a thread</a></li>
+        </ul>
+
+
+        {% block body %}
+            <p> Test post please ignore</p>
+        {% endblock %}
+    </body>
 </html>

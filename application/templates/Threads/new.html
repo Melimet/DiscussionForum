@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "layout.html" %}
+  
+{% block body %}
+<form method="POST" action="{{ url_for('Threads_create') }}">
+  <input type="text" name="name"/>
+  <input type="submit" value="Create a new thread"/>
+</form>
+{% endblock %}
