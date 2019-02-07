@@ -8,14 +8,14 @@
             <th>id</th>
             <th>Votes</th>
         </tr>
-        {% for Thread in Threads %}
+        {% for thread in threads %}
         <tr>
-            <td>{{ Thread.name }}</td>
-            <td>{{ Thread.id }}</td>
-            <td>{{ Thread.votes }}</td>
+            <td>{{ thread.name }}</td>
+            <td>{{ thread.id }}</td>
+            <td>{{ thread.votes }}</td>
             <td>
                 <form method="POST"
-                      action="{{ url_for('Thread_vote', Thread_id=Thread.id) }}">
+                      action="{{ url_for('thread_vote', thread_id=thread.id) }}">
                       <input type = "submit" value="Vote"/>
                 </form>
             </td>

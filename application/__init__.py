@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 
 from application import views
 
-from application.Threads import Thread
-from application.Threads import views
+from application.threads import thread
+from application.threads import views
 
 db.create_all()
