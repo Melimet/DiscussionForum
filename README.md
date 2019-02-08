@@ -1,7 +1,7 @@
-# DiscussionForum
+# Civilized Discussion Forum
 
 ## Kuvaus aiheesta
-Discussion Forum on keskustelufoorumi. Käyttäjät pystyvät luomaan lankoja(threads) ja vastaamaan niihin. Käyttäjiä on kahdenlaisia: admineita ja peruskäyttäjiä. Kuka vain voi liputtaa viestin tai langan adminin tarkistettavaksi ja mahdollisesti poistettavaksi. Langoissa ja vastauksissa on tarkoituksena viestin lisäksi näkyä käyttäjänimi ja aika jolloin viesti lähetettiin. Kuvien yhdistäminen viestiin on mahdollista. 
+Civilized Discussion Forum on keskustelufoorumi. Käyttäjät pystyvät luomaan lankoja(threads) ja vastaamaan niihin. Käyttäjiä on kahdenlaisia: admineita ja peruskäyttäjiä. Kuka vain voi liputtaa viestin tai langan adminin tarkistettavaksi ja mahdollisesti poistettavaksi. Langoissa ja vastauksissa on tarkoituksena viestin lisäksi näkyä käyttäjänimi ja aika jolloin viesti lähetettiin. Kuvien yhdistäminen viestiin on mahdollista. 
 
 ## Toiminnot
   * Langan luominen
@@ -17,7 +17,7 @@ Discussion Forum on keskustelufoorumi. Käyttäjät pystyvät luomaan lankoja(th
 
 ## Linkkejä
 
-Heroku : https://discusionforum.herokuapp.com/
+Heroku : https://civilizeddiscussionforum.herokuapp.com/
 
 Nykyinen tietokantakaavio(Muutoksia todennäköisesti tulossa): https://github.com/Melimet/DiscussionForum/blob/master/documentation/DiscussionForumDatabaseChart.png
 
