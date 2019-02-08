@@ -35,7 +35,7 @@ def auth_logout():
 @app.route("/auth/new", methods=["GET", "POST"])
 def auth_register():
 
-    if request.method== "GET":
+    if request.method == "GET":
         return render_template("auth/new.html", form = RegistrationForm())
 
     form = RegistrationForm(request.form)
@@ -43,7 +43,7 @@ def auth_register():
     if not form.validate():
         return render_template("auth/new.html", form = form)
 
-    u = User(form.email.data, form.username.data, form.password.data)
+    u = User(form.username.data, form.email.data, form.password.data)
 
     db.session.add(u)
     db.session.commit()

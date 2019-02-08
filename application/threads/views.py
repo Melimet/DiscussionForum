@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, url_for
+from flask_login import login_required
 
 from application import app, db
 from application.threads.models import thread
@@ -41,9 +42,22 @@ def threads_index():
 
 
 @app.route("/thread/<thread_id>/", methods=["POST"])
+@login_required
 def thread_vote(thread_id):
+
     t = thread.query.get(thread_id)
     t.votes += 1
+    db.session().commit()
+
+    return redirect(url_for("threads_index"))
+
+@app.route("/remove/<thread_id>/", methods=["POST"])
+@login_required
+def thread_remove(thread_id):
+
+    t = thread.query.get(thread_id)
+
+    db.session().delete(t)
     db.session().commit()
 
     return redirect(url_for("threads_index"))
