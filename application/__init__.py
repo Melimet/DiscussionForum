@@ -15,5 +15,6 @@ from application import views
 
 from application.threads import thread
 from application.threads import views
+from application.threads import forms
 
 db.create_all()

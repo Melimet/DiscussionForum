@@ -7,12 +7,14 @@
             <th>Subject</th>
             <th>id</th>
             <th>Votes</th>
+            <th>Comment</th>
         </tr>
         {% for thread in threads %}
         <tr>
             <td>{{ thread.name }}</td>
             <td>{{ thread.id }}</td>
             <td>{{ thread.votes }}</td>
+            <td> {{ thread.comment }}</td>
             <td>
                 <form method="POST"
                       action="{{ url_for('thread_vote', thread_id=thread.id) }}">
