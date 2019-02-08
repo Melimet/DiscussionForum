@@ -17,6 +17,8 @@ Civilized Discussion Forum on keskustelufoorumi. Käyttäjät pystyvät luomaan 
 
 ## Linkkejä
 
+Test account: username = tester password = tester
+
 Heroku : https://civilizeddiscussionforum.herokuapp.com/
 
 Nykyinen tietokantakaavio(Muutoksia todennäköisesti tulossa): https://github.com/Melimet/DiscussionForum/blob/master/documentation/DiscussionForumDatabaseChart.png
