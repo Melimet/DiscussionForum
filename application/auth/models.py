@@ -8,6 +8,8 @@ class User(db.Model):
     email = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
 
+    threads = db.relationship("thread", backref='account', lazy = True)
+
     def __init__(self, username, email, password):
         self.username = username
         self.email = email

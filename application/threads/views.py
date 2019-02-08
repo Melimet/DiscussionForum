@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from application import app, db
 from application.threads.models import thread
@@ -13,6 +13,7 @@ def threads_form():
 
 ##Create a new thread
 @app.route("/threads/", methods=["POST"])
+@login_required
 def threads_create():
     form = ThreadForm(request.form)
 
@@ -29,6 +30,7 @@ def threads_create():
         name = name[:50]
 
     t = thread(name, request.form.get("comment"))
+    t.account_id = current_user.id
 
     db.session().add(t)
     db.session().commit()
