@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 
 from application import app, db
-from application.threads.thread import thread
+from application.threads.models import thread
 from application.threads.forms import ThreadForm
 
 
