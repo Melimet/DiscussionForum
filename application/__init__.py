@@ -27,6 +27,9 @@ from application.threads import views
 from application.auth import models
 from application.auth import views
 
+from application.replies import models
+from application.replies import forms
+
 ##LOGIN
 from application.auth.models import User
 from os import urandom

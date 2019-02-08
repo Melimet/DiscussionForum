@@ -5,29 +5,43 @@
     <table>
         <tr>
             <th>Subject</th>
+            <th>OP</th>
             <th>id</th>
             <th>Votes</th>
             <th>Comment</th>
         </tr>
         {% for thread in threads %}
-        <tr>
-            <td>{{ thread.name }}</td>
-            <td>{{ thread.id }}</td>
-            <td>{{ thread.votes }}</td>
-            <td> {{ thread.comment }}</td>
-            <td>
-                <form method="POST"
-                      action="{{ url_for('thread_vote', thread_id=thread.id) }}">
-                      <input type = "submit" value="Vote"/>
-                </form>
-            </td>
-            <td>
-                <form method="POST"
-                      action="{{ url_for('thread_remove', thread_id=thread.id) }}">
-                      <input type = "submit" value="Remove thread"/>
-                </form>
-            </td>
-        </tr>
-        {%  endfor %}
+            <tr key="{{ thread.id }}">
+                <td>{{ thread.name }}</td>
+                <td>{{ users[thread.account_id - 1].username }}</td>
+                <td>{{ thread.id }}</td>
+                <td>{{ thread.votes }}</td>
+                <td> {{ thread.comment }}</td>
+                {% for reply in replies %}
+                    {% if reply.thread_id == thread.id %}
+                        <td>{{ reply.reply }}</td> {% endif %}
+                {% endfor %}
+                <td>
+
+                    <form method="POST"
+                          action="{{ url_for('thread_vote', thread_id=thread.id) }}">
+                        <input type="submit" value="Vote"/>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST"
+                          action="{{ url_for('thread_remove', thread_id=thread.id) }}">
+                        <input type="submit" value="Remove thread"/>
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="{{ url_for('reply_add', thread_id=thread.id) }}">
+                        <table>
+
+                        </table>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
     </table>
 {% endblock %}
