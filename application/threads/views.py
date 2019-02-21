@@ -10,7 +10,7 @@ from application.auth.models import User
 
 @app.route("/threads/new/")
 def threads_form():
-    return render_template("threads/new.html", form=ThreadForm())
+    return render_template("threads/new.html", form = ThreadForm())
 
 
 ##Create a new thread
