@@ -50,64 +50,7 @@
         </div>
         <!--
 
-    <table>
-        <tr>
-            <th>Subject</th>
-            <th>OP</th>
-            <th>id</th>
-            <th>Votes</th>
-            <th>Comment</th>
-        </tr>
-        {% for thread in threads %}
-            <tr>
-                <td>{{ thread.name }}</td>
-                <td>{{ users[thread.account_id - 1].username }}</td>
-                <td>{{ thread.id }}</td>
-                <td>{{ thread.votes }}</td>
-                <td> {{ thread.comment }}</td>
-                {% for reply in replies %}
-                    {% if reply.thread_id == thread.id %}
-                        <td>{{ reply.reply }}</td> {% endif %}
-                {% endfor %}
-                {% if current_user.is_authenticated %}
-                    <td>
-                        <form method="POST"
-                              action="{{ url_for('thread_vote', thread_id=thread.id) }}">
-                            <input type="submit" value="Vote"/>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="POST"
-                              action="{{ url_for('thread_remove', thread_id=thread.id) }}">
-                            <input type="submit" value="Remove thread"/>
-                        </form>
-                    </td>
-                    <td>
-                        <form method="POST" action="{{ url_for('reply_add', thread_id=thread.id) }}">
-                            <table>
-                            <tr>
-                                <td>{{ form.reply.label }}</td>
-                                <td> {{ form.reply }}</td>
-                                <td>
-                                    <ul>
-                                        {% for error in form.reply.errors %}
-                                            <li> {{ error }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <input type="submit" value="Submit a reply"/>
-                                </td>
-                            </tr>
-                            </table>
-                        </form>
-                    </td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-    </table>
+ 
     -->
     {% endfor %}
 {% endblock %}
