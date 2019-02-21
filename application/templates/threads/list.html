@@ -21,8 +21,9 @@
                     {% if reply.thread_id == thread.id %}
                         <td>{{ reply.reply }}</td> {% endif %}
                 {% endfor %}
-                <td>
+                {% if current_user.is_authenticated %}
 
+                <td>
                     <form method="POST"
                           action="{{ url_for('thread_vote', thread_id=thread.id) }}">
                         <input type="submit" value="Vote"/>
@@ -41,6 +42,7 @@
                         </table>
                     </form>
                 </td>
+            {% endif %}
             </tr>
         {% endfor %}
     </table>

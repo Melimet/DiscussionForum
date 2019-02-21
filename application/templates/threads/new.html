@@ -2,6 +2,8 @@
 
 {% block body %}
     <h1>Submit a thread</h1>
+    {% if current_user.is_authenticated %}
+
     <form method="POST" action="{{ url_for('threads_create') }}">
         <table>
             <tr>
@@ -33,4 +35,7 @@
             </tr>
         </table>
     </form>
+    {% else %}
+    <p>Please login to submit a thread :^)</p>
+    {% endif %}
 {% endblock %}
