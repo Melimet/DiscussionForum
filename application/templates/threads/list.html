@@ -2,6 +2,54 @@
 
 {% block body %}
     <H1>Threads</H1>
+
+
+    {% for thread in threads %}
+        <div class="container">
+            <div class="row">
+                <div class="Title col-sm-5">Title</div>
+                <div class="Op col-sm-2">Op</div>
+                <div class="id col-sm-2">id</div>
+                <div class="votes col-md-1">votes</div>
+                {% if current_user.is_authenticated %}
+                    <div class="removeThread col-md-1">
+                        <form method="POST"
+                              action="{{ url_for('thread_remove', thread_id=thread.id) }}">
+                            <input type="submit" value="Remove thread"/>
+                        </form>
+                    </div>
+                {% endif %}
+
+                <div class="w-100"></div>
+                <div class="Title col-sm-5">{{ thread.name }}</div>
+                <div class="Op col-sm-2">{{ users[thread.account_id - 1].username }}</div>
+                <div class="id col-sm-2">{{ thread.id }}</div>
+                <div class="votes col-md-1">{{ thread.votes }}</div>
+                {% if current_user.is_authenticated %}
+                    <div class="voteThread col-md1">
+                        <form method="POST"
+                              action="{{ url_for('thread_vote', thread_id=thread.id) }}">
+                            <input type="submit" value="Vote"/>
+                        </form>
+                    </div>
+                {% endif %}
+                <div class="w-100"></div>
+                <div class="Comment col-sm-9">{{ thread.comment }}</div>
+                <div class="w-100"></div>
+                {% for reply in replies %}
+                    <div class="Reply .col-md-6.offset.md-2">
+                        {% if reply.thread_id == thread.id %}
+                            <td>{{ reply.reply }}</td> {% endif %}
+                    </div>
+                {% endfor %}
+                <div class="w-100"></div>
+
+            </div>
+
+            <div class="row"></div>
+        </div>
+        <!--
+
     <table>
         <tr>
             <th>Subject</th>
@@ -11,7 +59,7 @@
             <th>Comment</th>
         </tr>
         {% for thread in threads %}
-            <tr key="{{ thread.id }}">
+            <tr>
                 <td>{{ thread.name }}</td>
                 <td>{{ users[thread.account_id - 1].username }}</td>
                 <td>{{ thread.id }}</td>
@@ -22,28 +70,44 @@
                         <td>{{ reply.reply }}</td> {% endif %}
                 {% endfor %}
                 {% if current_user.is_authenticated %}
-
-                <td>
-                    <form method="POST"
-                          action="{{ url_for('thread_vote', thread_id=thread.id) }}">
-                        <input type="submit" value="Vote"/>
-                    </form>
-                </td>
-                <td>
-                    <form method="POST"
-                          action="{{ url_for('thread_remove', thread_id=thread.id) }}">
-                        <input type="submit" value="Remove thread"/>
-                    </form>
-                </td>
-                <td>
-                    <form method="POST" action="{{ url_for('reply_add', thread_id=thread.id) }}">
-                        <table>
-
-                        </table>
-                    </form>
-                </td>
-            {% endif %}
+                    <td>
+                        <form method="POST"
+                              action="{{ url_for('thread_vote', thread_id=thread.id) }}">
+                            <input type="submit" value="Vote"/>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST"
+                              action="{{ url_for('thread_remove', thread_id=thread.id) }}">
+                            <input type="submit" value="Remove thread"/>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="{{ url_for('reply_add', thread_id=thread.id) }}">
+                            <table>
+                            <tr>
+                                <td>{{ form.reply.label }}</td>
+                                <td> {{ form.reply }}</td>
+                                <td>
+                                    <ul>
+                                        {% for error in form.reply.errors %}
+                                            <li> {{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <input type="submit" value="Submit a reply"/>
+                                </td>
+                            </tr>
+                            </table>
+                        </form>
+                    </td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>
+    -->
+    {% endfor %}
 {% endblock %}

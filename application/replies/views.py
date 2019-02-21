@@ -7,6 +7,7 @@ from application.replies.models import reply
 
 
 ##Doesn't actually do anything
+##Unused
 @app.route("/threads/<thread_id>/", methods=["POST"])
 @login_required
 def reply_add(thread_id):
