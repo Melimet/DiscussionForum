@@ -107,3 +107,4 @@ venv venv
 __pycache__
 threads.db
 .idea/
+node_modules
