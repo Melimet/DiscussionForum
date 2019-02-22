@@ -69,14 +69,15 @@ def thread_remove(thread_id):
     return redirect(url_for("threads_index"))
 
 
-@app.route("/replies/<thread_id>/", methods=["POST"])
+@app.route("/<thread_id>", methods=["POST"])
 @login_required
 def reply_add(thread_id):
 
     form = ReplyForm(request.form)
 
     if not form.validate():
-        return render_template("threads/list.html", form=ReplyForm)
+        return redirect(url_for("threads_index"))
+        ##render_template("threads/list.html", form=form)
 
     r = reply(form.reply.data)
     r.account_id = current_user.id

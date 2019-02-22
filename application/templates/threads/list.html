@@ -37,10 +37,13 @@
                 <div class="Comment col-sm-9">{{ thread.comment }}</div>
                 <div class="w-100"></div>
                 {% for reply in replies %}
+
                     <div class="Reply .col-md-6.offset.md-2">
                         {% if reply.thread_id == thread.id %}
-                            <td>{{ reply.reply }}</td> {% endif %}
+                            <div class="reply col-sm-5">Re: {{ reply.reply }}</div> {% endif %}
+                          <!--  <div class="replier col-sm-2">-{{ users[reply.account_id - 1].username }}</div> -->
                     </div>
+                    <div class="w-100"></div>
                 {% endfor %}
                 <div class="w-100"></div>
 
