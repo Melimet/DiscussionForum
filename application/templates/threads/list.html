@@ -40,7 +40,7 @@
 
                     <div class="Reply .col-md-6.offset.md-2">
                         {% if reply.thread_id == thread.id %}
-                            <div class="reply col-sm-5">Re: {{ reply.reply }}</div> {% endif %}
+                            <div class="reply col-sm-9">Re: <br> {{ reply.reply }}</div> {% endif %}
                           <!--  <div class="replier col-sm-2">-{{ users[reply.account_id - 1].username }}</div> -->
                     </div>
                     <div class="w-100"></div>
