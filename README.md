@@ -16,7 +16,7 @@ Civilized Discussion Forum on keskustelufoorumi. Käyttäjät pystyvät luomaan 
 Rekisteröidy sivustolle valitsemalla sivupalkista "Register"(Ei kannata käyttää oikeita salasanoja, koska ne tallennetaan plaintextina). Tämän jälkeen voit kirjautua sivustolle sivupalkin painikkeesta "Login". Langan voi luoda sivupalkin painikkeesta Submit a thread. Kaikki langat näkee sivupalkin painikkeesta "See all threads". Threads-sivulla pystyy poistamaan, vastaamaan ja antamaan ääniä vastauksille ja langoille.
 
 ## Asennusohje(Linux only)
- * Jos et vielä käytä Linuxia voit asentaa sellaisen vaikka Ubuntun osoitteesta https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0
+ * Jos et vielä käytä Linuxia voit asentaa sellaisen vaikka osoitteesta https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0
  * Avaa terminaali (`Control + alt + t`)
  * Asenna python3, sqlite3 ja git komennoilla `sudo apt-get install python3.6`, `sudo apt-get install sqlite3 libsqlite3-dev`
  ja `sudo apt-get install git` (Ei kannata tehdä tätä vaihetta, jos kyseiset ohjelmat jo löytyvät.)
