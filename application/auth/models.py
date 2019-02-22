@@ -7,6 +7,7 @@ class User(db.Model):
     username = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+    ADMIN = db.Column(db.Boolean, nullable=False)
 
     threads = db.relationship("thread", backref='account', lazy = True)
     replies = db.relationship("reply", backref='account', lazy = True)
@@ -16,6 +17,7 @@ class User(db.Model):
         self.username = username
         self.email = email
         self.password = password
+        self.ADMIN = False
 
     def get_id(self):
         return self.id
@@ -28,3 +30,9 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    def roles(self):
+        if self.ADMIN:
+            return ["ADMIN"]
+        else:
+            return ["USER"]
