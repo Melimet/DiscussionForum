@@ -30,8 +30,8 @@ def threads_create():
 
     name = request.form.get("name")
     if len(request.form.get("name")) == 0:
-        name = request.form.get("comment")
-        name = name[:50]
+
+        name = request.form.get("comment")[:50]
 
     t = thread(name, request.form.get("comment"))
     t.account_id = current_user.id

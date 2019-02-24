@@ -7,24 +7,22 @@
     {% for thread in threads %}
         <div class="container">
             <div class="row">
-                <div class="Title col-sm-5">Title</div>
-                <div class="Op col-sm-2">Op</div>
-                <div class="id col-sm-2">id</div>
-                <div class="votes col-md-1">votes</div>
+
                 {% if current_user.is_authenticated %}
-                    <div class="removeThread col-md-1">
+                    <div class="empty col-sm-7"></div>
+                    <div class="removeThread col-md-3">
                         <form method="POST"
                               action="{{ url_for('thread_remove', thread_id=thread.id) }}">
                             <input type="submit" value="Remove thread"/>
                         </form>
                     </div>
+                    <div class="w-100"></div>
+
                 {% endif %}
 
-                <div class="w-100"></div>
-                <div class="Title col-sm-5">{{ thread.name }}</div>
-                <div class="Op col-sm-2">{{ users[thread.account_id - 1].username }}</div>
-                <div class="id col-sm-2">{{ thread.id }}</div>
-                <div class="votes col-md-1">{{ thread.votes }}</div>
+                <div class="Title col-sm-5"><b>{{ thread.name }}</b></div>
+                <div class="Op col-sm-2">OP: {{ users[thread.account_id - 1].username }}</div>
+                <div class="votes col-md-1">Votes: {{ thread.votes }}</div>
                 {% if current_user.is_authenticated %}
                     <div class="voteThread col-md1">
                         <form method="POST"
@@ -34,14 +32,14 @@
                     </div>
                 {% endif %}
                 <div class="w-100"></div>
-                <div class="Comment col-sm-9">{{ thread.comment }}</div>
+                <div class="Comment col-sm-9">Comment: {{ thread.comment }}</div>
                 <div class="w-100"></div>
                 {% for reply in replies %}
 
-                    <div class="Reply .col-md-6.offset.md-2">
+                    <div class="Reply .col-md-1.offset.md-6">
                         {% if reply.thread_id == thread.id %}
                             <div class="reply col-sm-9">Re: <br> {{ reply.reply }}</div> {% endif %}
-                          <!--  <div class="replier col-sm-2">-{{ users[reply.account_id - 1].username }}</div> -->
+                        <!--  <div class="replier col-sm-2">-{{ users[reply.account_id - 1].username }}</div> -->
                     </div>
                     <div class="w-100"></div>
                 {% endfor %}
