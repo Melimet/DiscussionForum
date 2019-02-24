@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <h1>Profile</h1>
+
+    {% if current_user.is_authenticated %}
+
+
+        <div class="container">
+            <div class="row">
+                <div class="Username col-sm-9">Current username: {{ current_user.username }}</div>
+                <div class="Email col-sm-9">Current email: {{ current_user.email }}</div>
+                <div class="w=100"></div>
+            </div>
+        </div>
+        <form method="POST" action="{{ url_for('auth_profile', id = current_user.id) }}">
+            <table>
+                <tr>
+                    <td>{{ form1.email.label }}</td>
+                    <td> {{ form1.email }}</td>
+                    <td> {{ form1.submit1 }}</td>
+                    <td>
+                        <ul>
+                            {% for error in form1.email.errors %}
+                                <li> {{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+
+                </tr>
+                <td> {{ form2.password.label }}</td>
+                <td> {{ form2.password }}</td>
+                <td> {{ form2.submit2 }}</td>
+                <td>
+                    <ul>
+                        {% for error in form2.password.errors %}
+                            <li> {{ error }} </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+
+            </table>
+        </form>
+
+    {% else %}
+        <p>Login to see your profile!</p>
+    {% endif %}
+
+{% endblock %}

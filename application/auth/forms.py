@@ -15,3 +15,18 @@ class RegistrationForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class EmailChangeForm(FlaskForm):
+    email = StringField("email", [validators.Length(min=5, max=50), validators.Email(message="Please make sure your email address is valid")])
+    submit1 = SubmitField('Update email')
+
+    class Meta:
+        csrf = False
+
+class PasswordChangeForm(FlaskForm):
+
+    password = PasswordField("password", [validators.Length(min=6, max=20)])
+    submit2 = SubmitField('Update password')
+
+    class Meta:
+        csrf = False

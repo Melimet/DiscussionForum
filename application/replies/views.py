@@ -17,7 +17,7 @@ def reply_add(thread_id):
     if not form.validate():
         return render_template("threads/list.html", form = form)
 
-    r = reply(form.text.data)
+    r = reply(form.reply.data)
     r.account_id = current_user.id
     r.thread_id = thread_id
 
