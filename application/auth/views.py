@@ -39,8 +39,15 @@ def auth_register():
 
     form = RegistrationForm(request.form)
 
+
+
     if not form.validate():
         return render_template("auth/new.html", form=form)
+
+    ##Checking if a user with the username already exists
+    u = User.query.filter_by(username = form.username.data).first()
+    if u:
+        return render_template("auth/new.html", form=form, errorMessage="Username has already been registered.")
 
     u = User(form.username.data, form.email.data, form.password.data)
 
