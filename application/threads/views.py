@@ -1,7 +1,8 @@
-from flask import render_template, request, redirect, url_for
-from flask_login import login_required, current_user
+from application import app, db, login_required, login_manager
 
-from application import app, db
+from flask import render_template, request, redirect, url_for
+from flask_login import current_user
+
 from application.threads.models import thread
 from application.threads.forms import ThreadForm
 
@@ -18,7 +19,7 @@ def threads_form():
 
 ##Create a new thread
 @app.route("/threads/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def threads_create():
     form = ThreadForm(request.form)
 
@@ -30,7 +31,6 @@ def threads_create():
 
     name = request.form.get("name")
     if len(request.form.get("name")) == 0:
-
         name = request.form.get("comment")[:50]
 
     t = thread(name, request.form.get("comment"))
@@ -49,7 +49,7 @@ def threads_index():
 
 
 @app.route("/thread/<thread_id>/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def thread_vote(thread_id):
     t = thread.query.get(thread_id)
     t.votes += 1
@@ -59,20 +59,27 @@ def thread_vote(thread_id):
 
 
 @app.route("/remove/<thread_id>/", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def thread_remove(thread_id):
     t = thread.query.get(thread_id)
+    ##All replies to be deleted
 
-    db.session().delete(t)
-    db.session().commit()
+    r = reply.__table__.delete().where(reply.thread_id == thread_id)
 
-    return redirect(url_for("threads_index"))
+    ##r = db.session.query(reply).filter(reply.thread_id == thread_id).all() ##
+
+    if t.account_id == current_user.id or current_user.ADMIN:
+        db.session.execute(r)
+        db.session().delete(t)
+        db.session().commit()
+        return redirect(url_for("threads_index"))
+
+    return login_manager.unauthorized()
 
 
 @app.route("/<thread_id>", methods=["POST"])
-@login_required
+@login_required(role="ANY")
 def reply_add(thread_id):
-
     form = ReplyForm(request.form)
 
     if not form.validate():

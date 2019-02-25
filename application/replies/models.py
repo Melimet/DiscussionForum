@@ -9,8 +9,8 @@ class reply(db.Model):
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
-    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'), nullable=False)
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'), nullable=True)
+    thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'), nullable=True)
 
 
     def __init__(self, reply):
