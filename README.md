@@ -30,10 +30,19 @@ Rekisteröidy sivustolle valitsemalla sivupalkista "Register"(Ei kannata käytt�
  * Sovelluksen voi nyt käynnistää komennolla `python3 run.py`
  * Sovellus pyörii nyt verkossa osoitteessa `localhost:5000`
  * Lue käyttöohjeesta ohjeet sovelluksen käyttöön
+ 
+## Loppusanat
+Kaiken kaikkiaan projekti meni ihan hyvin. Alussa suunniteltuja toiminnallisuuksia piti leikata aika rankasti, jonka takia tietokantatauluihin on jäänyt käyttämättömiä attribuutteja(esimerkiksi date_created ja date_modified threads ja replies tauluissa). Dokumentaatio on ajan tasalla ja niin myös tietokantakaavio ja tietokannan alustuslauseet. 
+
+Python ja sen kirjastojen opettelu tuotti paljon harmaita hiuksia ja vasta projektin loppuviikoilla alkoi homma luistamaan paremmin. Koodi on mielestäni järkevää ja tietokannat on toteutettu hyvin. Lankojen vastauksiin olisi pitänyt lisätä toimintoja kuten poistaminen ja muokkaaminen, mutta aika jäi kesken. Lankojen äänestämistoiminnallisuus olisi pitänyt eritellä omaan luokkaansa, jotta ääniä olisi kyennyt antamaan vain 1/käyttäjä. 
+
+Kurssilla opin paljon Pythonista, hieman laajemmista ohjelmointiprojekteista ja aikataulutuksen tärkeydestä. Kurssi oli mielenkiintoinen ja opetti/pakotti hakemaan tietoa muualtakin kuin pelkästään kurssimateriaaleista. Projektini kuitenkin teoriassa pystyisi toimimaan ihan oikeanakin keskustelufoorumina, joten sanoisin projektini olleen onnistunut.
+
+
 
 ## Linkkejä
 
-Test account: username = tester password = tester
+Test account: username = tester password = tester  (Might not work if someone has changed test account's password so just register a new account)
 
 Heroku : https://civilizeddiscussionforum.herokuapp.com/
 
