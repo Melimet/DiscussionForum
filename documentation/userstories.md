@@ -1,10 +1,12 @@
-# User Stories (Still somewhat under construction...)
+# User Stories
 
 | As a/an | I want to                           | So that...                                                       |
 | ------- | ----------------------------------- | ---------------------------------------------------------------- |
 | user    | make a discussion thread            | others can give their opinion on the subject                     |
-| user    | comment on other users' recipes     | they get good critic on it and everyone knows is the recipe good |
-| user    | flag other people's replies for review | keep the discussion civil and respectful                      |
-| admin   | remove bad comments                 | keep the forums clean and enjoyable                              |
-| admin   | permanently ban people              | other users dont have to suffer them                             |
+| user    | reply to other threads              | I can voice my opinion on the topic in question                  |
+| user    | register an account                 | I can join the discussion                               |
+| user    | edit or delete my account | I can keep my account details up to date or delete it if I want to                  |
+| user    | vote a thread | I can show that I agree with this statement                  |
+| admin   | remove bad comments                 | keep the forums clean                                             |
+
 
