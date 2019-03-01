@@ -45,47 +45,47 @@ def auth_register():
         return render_template("auth/new.html", form=form)
 
     ##Checking if a user with the username already exists
-    u = User.query.filter_by(username = form.username.data).first()
-    if u:
+    userNew = User.query.filter_by(username = form.username.data).first()
+    if userNew:
         return render_template("auth/new.html", form=form, errorMessage="Username has already been registered.")
 
-    u = User(form.username.data, form.email.data, form.password.data)
+    userNew = User(form.username.data, form.email.data, form.password.data)
 
-    db.session.add(u)
+    db.session.add(userNew)
     db.session.commit()
 
     return redirect(url_for("index"))
 
 @app.route("/auth/profile", methods=["GET"])
 def auth_profileGet():
-    form1 = EmailChangeForm()
-    form2 = PasswordChangeForm()
+    formEmail = EmailChangeForm()
+    formPassword = PasswordChangeForm()
 
-    return render_template("auth/profile.html", form1=form1, form2=form2)
+    return render_template("auth/profile.html", formEmail=formEmail, formPassword=formPassword)
 
 
 @app.route("/auth/profile/<id>", methods=["POST"])
 @login_required(role="ANY")
 def auth_profile(id):
 
-    form1 = EmailChangeForm(request.form)
-    form2 = PasswordChangeForm(request.form)
+    formEmail = EmailChangeForm(request.form)
+    formPassword = PasswordChangeForm(request.form)
 
 
-    if form1.submit1.data and form1.validate():
+    if formEmail.submit1.data and formEmail.validate():
 
-        u = db.session.query(User).filter(User.id == id).first()
+        user = db.session.query(User).filter(User.id == id).first()
 
-        u.email = form1.email.data
+        user.email = formEmail.email.data
         db.session.commit()
         return redirect(url_for("auth_profileGet"))
 
 
-    if form2.submit2.data and form2.validate():
+    if formPassword.submit2.data and formPassword.validate():
 
-        u = db.session.query(User).filter(User.id == id).first()
-        u.password = form2.password.data
+        user = db.session.query(User).filter(User.id == id).first()
+        user.password = formPassword.password.data
         db.session.commit()
         return redirect(url_for("auth_profileGet"))
 
-    return render_template("auth/profile.html", form1=form1, form2=form2)
+    return render_template("auth/profile.html", formEmail=formEmail, formPassword=formPassword)

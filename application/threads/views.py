@@ -33,10 +33,10 @@ def threads_create():
     if len(request.form.get("name")) == 0:
         name = request.form.get("comment")[:50]
 
-    t = thread(name, request.form.get("comment"))
-    t.account_id = current_user.id
+    threadNew = thread(name, request.form.get("comment"))
+    threadNew.account_id = current_user.id
 
-    db.session().add(t)
+    db.session().add(threadNew)
     db.session().commit()
 
     return redirect(url_for("threads_index"))
@@ -61,16 +61,14 @@ def thread_vote(thread_id):
 @app.route("/remove/<thread_id>/", methods=["POST"])
 @login_required(role="ANY")
 def thread_remove(thread_id):
-    t = thread.query.get(thread_id)
-    ##All replies to be deleted
+    threadRemove = thread.query.get(thread_id)
+    ##Get replies to be deleted
 
-    r = reply.__table__.delete().where(reply.thread_id == thread_id)
+    repliesRemove = reply.__table__.delete().where(reply.thread_id == thread_id)
 
-    ##r = db.session.query(reply).filter(reply.thread_id == thread_id).all() ##
-
-    if t.account_id == current_user.id or current_user.ADMIN:
-        db.session.execute(r)
-        db.session().delete(t)
+    if threadRemove.account_id == current_user.id or current_user.ADMIN:
+        db.session.execute(repliesRemove)
+        db.session().delete(threadRemove)
         db.session().commit()
         return redirect(url_for("threads_index"))
 
@@ -86,11 +84,11 @@ def reply_add(thread_id):
         return redirect(url_for("threads_index"))
         ##render_template("threads/list.html", form=form)
 
-    r = reply(form.reply.data)
-    r.account_id = current_user.id
-    r.thread_id = thread_id
+    replyAdd = reply(form.reply.data)
+    replyAdd.account_id = current_user.id
+    replyAdd.thread_id = thread_id
 
-    db.session().add(r)
+    db.session().add(replyAdd)
     db.session().commit()
 
     return redirect(url_for("threads_index"))
