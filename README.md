@@ -46,7 +46,7 @@ Test account: username = tester password = tester  (Might not work if someone ha
 
 Heroku : https://civilizeddiscussionforum.herokuapp.com/
 
-Nykyinen tietokantakaavio(Muutoksia todennäköisesti tulossa): https://github.com/Melimet/DiscussionForum/blob/master/documentation/DiscussionForumDatabaseChart.png
+Nykyinen tietokantakaavio(Muutoksia todennäköisesti tulossa): https://github.com/Melimet/DiscussionForum/blob/master/documentation/DiscussionForumDatabaseChart.jpg
 
 Userstories: https://github.com/Melimet/DiscussionForum/blob/master/documentation/userstories.md
 
