@@ -51,8 +51,8 @@ def threads_index():
 @app.route("/thread/<thread_id>/", methods=["POST"])
 @login_required(role="ANY")
 def thread_vote(thread_id):
-    t = thread.query.get(thread_id)
-    t.votes += 1
+    threadVote = thread.query.get(thread_id)
+    threadVote.votes += 1
     db.session().commit()
 
     return redirect(url_for("threads_index"))

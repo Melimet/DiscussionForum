@@ -4,6 +4,10 @@ from flask_login import login_user, logout_user, current_user
 from application import app, db, login_required, login_manager
 from application.auth.models import User
 from application.auth.forms import LoginForm, RegistrationForm, EmailChangeForm, PasswordChangeForm
+from application.threads.views import thread_remove
+from application.threads.models import thread
+from application.replies.models import reply
+
 
 
 @app.route("/auth/login", methods=["GET", "POST"])
@@ -53,6 +57,7 @@ def auth_register():
 
     db.session.add(userNew)
     db.session.commit()
+    login_user(userNew)
 
     return redirect(url_for("index"))
 
@@ -89,3 +94,30 @@ def auth_profile(id):
         return redirect(url_for("auth_profileGet"))
 
     return render_template("auth/profile.html", formEmail=formEmail, formPassword=formPassword)
+
+@app.route("/auth/remove/<id>", methods=["POST"])
+@login_required(role="ANY")
+def auth_remove(id):
+
+    accountRemove = User.query.get(id)
+
+
+    ##Remove Threads and all replies in threads that this user has made
+    threadsToRemove = thread.query.filter_by(account_id = id).all()
+
+    for threadToRemove in threadsToRemove:
+        thread_remove(threadToRemove.id)
+
+
+    ##Remove all replies the user in question has made
+    repliesToRemove = reply.query.filter_by(account_id = id).all()
+
+    for replyToRemove in repliesToRemove:
+        db.session.delete(replyToRemove)
+
+    db.session().delete(accountRemove)
+    db.session().commit()
+
+    return redirect(url_for("index"))
+
+
