@@ -40,3 +40,5 @@ Heroku : https://civilizeddiscussionforum.herokuapp.com/
 Nykyinen tietokantakaavio(Muutoksia todennäköisesti tulossa): https://github.com/Melimet/DiscussionForum/blob/master/documentation/DiscussionForumDatabaseChart.png
 
 Userstories: https://github.com/Melimet/DiscussionForum/blob/master/documentation/userstories.md
+
+Create table-lausekkeet: https://github.com/Melimet/DiscussionForum/blob/master/documentation/CreateTableCommands
