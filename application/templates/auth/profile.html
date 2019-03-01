@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{ formEmail.email.label }}</td>
                     <td> {{ formEmail.email }}</td>
-                    <td> {{ formEmail.submit1 }}</td>
+                    <td> {{ formEmail.submit1(class="btn btn-primary") }}</td>
                     <td>
                         <ul>
                             {% for error in formEmail.email.errors %}
@@ -30,7 +30,7 @@
                 </tr>
                 <td> {{ formPassword.password.label }}</td>
                 <td> {{ formPassword.password }}</td>
-                <td> {{ formPassword.submit2 }}</td>
+                <td> {{ formPassword.submit2(class="btn btn-primary") }}</td>
                 <td>
                     <ul>
                         {% for error in formPassword.password.errors %}
@@ -43,7 +43,7 @@
         </form>
         <form method="POST"
               action="{{ url_for('auth_remove', id = current_user.id) }}">
-              <input type="submit" value="Delete account(PERMANENTLY)">
+              <input class="btn btn-danger" type="submit" value="Delete account(PERMANENTLY)">
         </form>
 
     {% else %}

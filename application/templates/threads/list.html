@@ -13,7 +13,7 @@
                     <div class="removeThread col-md-3">
                         <form method="POST"
                               action="{{ url_for('thread_remove', thread_id=thread.id) }}">
-                            <input type="submit" value="Remove thread"/>
+                            <input class="btn btn-primary" type="submit" value="Remove thread"/>
                         </form>
                     </div>
                     <div class="w-100"></div>
@@ -27,7 +27,7 @@
                     <div class="voteThread col-md1">
                         <form method="POST"
                               action="{{ url_for('thread_vote', thread_id=thread.id) }}">
-                            <input type="submit" value="Vote"/>
+                            <input class="btn btn-primary" type="submit" value="Vote"/>
                         </form>
                     </div>
                 {% endif %}
@@ -68,7 +68,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="3">
-                                        <input type="submit" value="Submit a reply"/>
+                                        <input class="btn btn-primary" type="submit" value="Submit a reply"/>
                                     </td>
                                 </tr>
                             </table>
