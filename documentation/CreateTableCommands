@@ -1,0 +1,7 @@
+## CREATE TABLE COMMANDS
+
+CREATE TABLE account( id INTEGER NOT NULL, username VARCHAR(50), email VARCHAR(50), password VARCHAR(50), admin BOOLEAN,  PRIMARY KEY(id));
+
+CREATE TABLE thread( id INTEGER NOT NULL, account_id INTEGER NOT NULL, name VARCHAR(50), comment VARCHAR(500), votes INTEGER, date_created DATETIME, date_modified DATETIME, PRIMARY KEY (id), FOREIGN KEY(account_id) REFERENCES account(id));
+
+CREATE TABLE reply( id INTEGER NOT NULL, account_id INTEGER NOT NULL, thread_id NOT NULL, reply VARCHAR(500), votes INTEGER, date_created DATETIME, date_modified DATETIME, PRIMARY KEY(id), FOREIGN KEY(account_id) REFERENCES account(id), FOREIGN KEY(thread_id) REFERENCES thread(id));
